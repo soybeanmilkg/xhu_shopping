@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <title>登录界面</title>
+    <script src="../static/lib/jquery/jquery-3.4.1.js"></script>
+</head>
+<style>
+    /**********************************482-490-668********************************************************/
+    *{
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+    }
+    body{
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+    #foundation{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: white;
+        opacity: 0.8;
+        z-index: 0;
+        overflow: hidden;
+    }
+    /**************************************/
+    .login{
+        width: 30%;
+        height: 90%;
+        position: absolute;
+        top: 5%;
+        left: 65%;
+        background: url("../static/image/a1.jfif");
+        background-size: 100% 100%;
+        z-index: 10;
+        opacity: 0;
+        display: none;
+        overflow: hidden;
+        transition: all 1s;
+    }
+    .login_change{
+        width: 30%;
+        height: 90%;
+        position: absolute;
+        top: 5%;
+        left: 65%;
+        background: url("../static/image/a1.jfif");
+        background-size: 100%;
+        z-index: 10;
+        overflow: hidden;
+        opacity: 1;
+        display: block;
+        transition: all 0.5s;
+    }
+
+    #login_form{
+        width: 80%;
+        height: 60%;
+        position: absolute;
+        top: 20%;
+        left: 10%;
+        overflow: hidden;
+    }
+    #login #form input{
+        width: 60%;
+        height: 8%;
+        font-size: 25px;
+        font-family: Cursive;
+    }
+    #login #form #submit{
+        position: absolute;
+        font-size: 25px;
+        font-family: Cursive;
+        border: 1px solid grey;
+        top: 70%;
+        left: 35%;
+        width: 30%;
+        height: 8%;
+    }
+
+    #username{
+        position: absolute;
+        left: 25%;
+        top: 30%;
+        border: 0;
+        box-shadow: 3px 3px 3px grey;
+    }
+    #submit_input{
+        position: absolute;
+        left: 25%;
+        top:90%;
+        z-index: 10;
+    }
+    .zh{
+        width: 25%;
+        height: 8%;
+        font-size: 30px;
+        letter-spacing: 8px;
+        text-align: center;
+        font-family: Cursive;
+        position: absolute;
+        left: 0%;
+        color:white;
+        opacity: 1;
+        top: 30%;
+        z-index: 15;
+    }
+    #password{
+        position: absolute;
+        left: 25%;
+        top: 50%;
+    }
+    .mm{
+        width: 25%;
+        height: 8%;
+        font-size: 30px;
+        letter-spacing: 8px;
+        text-align: center;
+        font-family: Cursive;
+        position: absolute;
+        left: 0%;
+        color:white;
+        opacity: 1;
+        top: 50%;
+        z-index: 15;
+    }
+    /***************************************************************************/
+    .enroll{
+        width: 60%;
+        height: 90%;
+        position: absolute;
+        top: 5%;
+        left: 35%;
+        background: url("../static/image/7.png");
+        background-size: 100% 100%;
+        z-index: 9;
+        opacity: 0;
+        transition: opacity 1s;
+    }
+
+    .enroll_change {
+        width: 60%;
+        height: 90%;
+        position: absolute;
+        top: 5%;
+        left: 35%;
+        background: url("../static/image/7.png");
+        background-size: 100% 100%;
+        z-index: 9;
+        opacity: 1;
+        transition: opacity 1s;
+    }
+    #enroll_form{
+        width: 40%;
+        height: 80%;
+        position: absolute;
+        left: 50%;
+        top: 10%;
+    }
+    .enroll_div{
+        width: 100%;
+        height: 7%;
+        border: 2px solid indianred;
+        position: relative;
+        background: 0,0,0,0;
+        border-radius: 25px 25px 25px 25px;
+        margin-top: 10%;
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+    }
+    .enroll_div_change{
+        width: 100%;
+        height: 7%;
+        border: 2px solid indianred;
+        position: relative;
+        background: 0,0,0,0;
+        border-radius: 25px 25px 25px 25px;
+        margin-top: 10%;
+        transform: scale(1.1);
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+    }
+    #enroll_form div p{
+        width: 25%;
+        height: 80%;
+        font-size: 20px;
+        position: absolute;
+        top: 14%;
+        text-align: center;
+        color: #D57869;
+    }
+    .enroll_input{
+        width: 75%;
+        height: 100%;
+        position: absolute;
+        left: 20%;
+        border: 0;
+        font-size: 20px;
+        background: 0;
+        outline: 0;
+        appearance: none;
+        -webkit-appearance: none;
+    }
+
+    /***********************************/
+    .floor_top{
+        width: 20%;
+        height: 90%;
+        position: absolute;
+        top: 5%;
+        left: 10%;
+        border-bottom: 4px solid wheat;
+        overflow: hidden;
+        z-index: 12;
+    }
+    .floor_top p1{
+        position: absolute;
+        top: 10%;
+        left: 5%;
+        font-family: Cursive;
+        font-size: 38px;
+        color: white;
+        letter-spacing: 10px;
+        opacity: 1;
+    }
+    /***********************/
+    .p2{
+        width: 40%;
+        height: 4%;
+        position: absolute;
+        top: 30%;
+        left: 15%;
+        font-family: Cursive;
+        font-size: 24px;
+        color: white;
+        letter-spacing: 5px;
+        opacity: 0.5;
+        transition:all 1.5s;
+    }
+    .p2_change{
+        width: 40%;
+        height: 4%;
+        position: absolute;
+        top: 30%;
+        left: 15%;
+        font-family: Cursive;
+        font-size: 24px;
+        color: white;
+        letter-spacing: 5px;
+        opacity:1;
+        transform: scale(1.2);
+        transition: all 1.5s;
+    }
+    /**************************************/
+    .p3{
+        width: 40%;
+        height: 4%;
+        position: absolute;
+        top: 40%;
+        left: 15%;
+        font-family: Cursive;
+        font-size: 24px;
+        color: white;
+        letter-spacing: 5px;
+        opacity: 0.5;
+        transition:all 1.5s;
+    }
+    .p3_change{
+        width: 40%;
+        height: 4%;
+        position: absolute;
+        top: 40%;
+        left: 15%;
+        font-family: Cursive;
+        font-size: 24px;
+        color: white;
+        letter-spacing: 5px;
+        opacity:1;
+        transform: scale(1.2);
+        transition: all 1.5s;
+    }
+    /*************************************************************/
+    .p4{
+        width: 40%;
+        height: 4%;
+        position: absolute;
+        top: 50%;
+        left: 15%;
+        font-family: Cursive;
+        font-size: 24px;
+        color: white;
+        letter-spacing: 5px;
+        opacity: 0.5;
+        transition:all 1.5s;
+    }
+    .p4_change{
+        width: 40%;
+        height: 4%;
+        position: absolute;
+        top: 50%;
+        left: 15%;
+        font-family: Cursive;
+        font-size: 24px;
+        color: white;
+        letter-spacing: 5px;
+        opacity:1;
+        transform: scale(1.2);
+        transition: all 1.5s;
+    }
+
+    /*************************************************/
+    .p5{
+        width: 40%;
+        height: 4%;
+        position: absolute;
+        top: 60%;
+        left: 15%;
+        font-family: Cursive;
+        font-size: 24px;
+        color: white;
+        letter-spacing: 5px;
+        opacity: 0.5;
+        transition:all 1.5s;
+    }
+    .p5_change{
+        width: 40%;
+        height: 4%;
+        position: absolute;
+        top: 60%;
+        left: 15%;
+        font-family: Cursive;
+        font-size: 24px;
+        color: white;
+        letter-spacing: 5px;
+        opacity: 1;
+        transform: scale(1.2);
+        transition:all 1.5s;
+    }
+    /**************************************************/
+    .p6{
+        position: absolute;
+        top: 70%;
+        left: 0%;
+        font-family: Cursive;
+        font-size: 38px;
+        color: white;
+        letter-spacing: 7px;
+        opacity: 0.5;
+    }
+    .p6_change{
+        position: absolute;
+        top: 70%;
+        left: 0%;
+        font-family: Cursive;
+        font-size: 38px;
+        color: white;
+        letter-spacing: 7px;
+        opacity: 1;
+    }
+    .p7{
+        position: absolute;
+        top: 70%;
+        left: 40%;
+        font-family: Cursive;
+        font-size: 38px;
+        color: white;
+        letter-spacing: 7px;
+        opacity: 0.5;
+    }
+    .p7_change{
+        position: absolute;
+        top: 70%;
+        left: 40%;
+        font-family: Cursive;
+        font-size: 38px;
+        color: white;
+        letter-spacing: 7px;
+        opacity: 1;
+    }
+    /**************************************/
+    .floor_sixth{
+        width: 60%;/*****90*******/
+        height: 90%;
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        background: url("../static/image/1.png");
+        z-index: 11;
+        opacity: 1;
+        overflow: hidden;
+        transition: all 1s;
+        -webkit-transition: all 1s;
+    }
+    .floor_sixth_change{
+        width: 30%;
+        height: 90%;
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        background: url("../static/image/1.png");
+        z-index: 11;
+        opacity: 0.95;
+        transition: all 2s;
+        -webkit-transition: all 2s;
+    }
+    .floor_sixth_change1 {
+        width: 90%;
+        height: 90%;
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        background: url("../static/image/1.png");
+        opacity: 1;
+        z-index: 11;
+        transition: all 1s;
+        -webkit-transition: all 1s;
+    }
+
+    /**********************************************************************************/
+    .floor_first{
+        width: 60%;
+        height: 90%;
+        position: absolute;
+        background: gray;
+        top: 5%;
+        left: 35%;
+        opacity: 1;
+        z-index: 8;
+        transition: opacity 1s;
+        -webkit-transition: opacity 1s;
+    }
+    .floor_second{
+        width: 60%;
+        height: 90%;
+        position: absolute;
+        background: rebeccapurple;
+        top: 5%;
+        left: 35%;
+        z-index:7;
+        opacity: 0.4;
+        transition: opacity 1s;
+        -webkit-transition: opacity 1s;
+    }
+    .floor_third{
+        width: 60%;
+        height: 90%;
+        position: absolute;
+        background: wheat;
+        top: 5%;
+        left: 35%;
+        z-index:6;
+        opacity: 0.4;
+        transition: opacity 1s;
+        -webkit-transition: opacity 1s;
+    }
+    .floor_fourth{
+        width: 60%;
+        height: 90%;
+        position: absolute;
+        background: yellow;
+        top: 5%;
+        left: 35%;
+        z-index: 5;
+        opacity: 0.4;
+        transition: opacity 1s;
+        -webkit-transition: opacity 1s;
+    }
+    .floor_fifth{
+        width: 60%;
+        height: 90%;
+        position: absolute;
+        background: orange;
+        top: 5%;
+        left: 35%;
+        z-index: 4;
+        opacity: 0.4;
+        transition: opacity 1s;
+        -webkit-transition: opacity 1s;
+    }
+</style>
+<body>
+<div id="foundation">
+    <div id="login" class="login">
+        <div id="login_form" name="login_form">
+            <div id="form">
+                <div class="zh"><span><strong>账户</strong></span></div><div><label><input id="username" type="text" name="username" placeholder="请输入用户名"></label></div>
+                <div class="mm"><span>密码</span></div><div><label><input id="password" type="password" name="password"  placeholder="请输入密码"></label></div>
+                <input type="submit" id="submit" onclick="dl()">
+            </div>
+        </div>
+    </div>
+    <div id="enroll" class="enroll">
+        <div id="enroll_form">
+            <div id="enroll_div1" class="enroll_div"><p>昵称：</p><label><input class="enroll_input" type="text" id="enroll_input1" name="username" onfocus="en1_1();" onblur="en1_2()"  placeholder="设置一个大于四位的账户"></label></div>
+            <div id="enroll_div2" class="enroll_div"><p>密码：</p><label><input class="enroll_input" type="password" id="enroll_input2" name="password" onfocus="en2_1();" onblur="en2_2()"  placeholder="设置一个六到九位的密码"></label></div>
+            <div id="enroll_div3" class="enroll_div"><p>确认：</p><label><input class="enroll_input" type="password" id="enroll_input3" onfocus="en3_1();" onblur="en3_2()"  placeholder="再次输入你的密码"></label></div>
+            <div id="enroll_div4" class="enroll_div"><p>地址：</p><label><input class="enroll_input" type="text" id="enroll_input4" name="address"  onfocus="en4_1();" onblur="en4_2()"  placeholder="填写你的默认地址"></label></div>
+            <div id="enroll_div5" class="enroll_div"><p>姓名：</p><label><input class="enroll_input" type="text" id="enroll_input5" name="userName" onfocus="en5_1();" onblur="en5_2()"  placeholder="填写你的真实姓名"></label></div>
+            <div id="enroll_div6" class="enroll_div"><p>联系：</p><label><input class="enroll_input" type="text" id="enroll_input6" name="phone" onfocus="en6_1();" onblur="en6_2()"  placeholder="填写你的电话联系"></label></div>
+            <div id="enroll_div7" class="enroll_div"><label><button onclick="ZC()">注册</button></label></div>
+        </div>
+    </div>
+    <div id="floor_sixth" class="floor_sixth"></div>
+    <div id="floor_top" class="floor_top">
+        <p1>&nbsp;&nbsp;XHU<br>Recycle</p1>
+        <p2 id="p2" class="p2" onmouseover="A()" onmouseleave="B()">网页介绍</p2>
+        <p3 id="p3" class="p3" onmouseover="A1()" onmouseleave="B1()">市场界面</p3>
+        <p4 id="p4" class="p4" onmouseover="A2()" onmouseleave="B2()">线下市场</p4>
+        <p5 id="p5" class="p5" onmouseover="A3()" onmouseleave="B3()">用户界面</p5>
+        <p6 id="p6" class="p6" onclick="A4()">登录</p6>
+        <p7 id="p7" class="p7" onclick="B4()">注册</p7>
+    </div>
+    <div id="floor_first" class="floor_first"></div>
+    <div id="floor_second" class="floor_second"></div>
+    <div id="floor_third" class="floor_third"></div>
+    <div id="floor_fourth" class="floor_fourth"></div>
+    <div id="floor_fifth" class="floor_fifth"></div>
+</div>
+<script type="text/javascript" src="../static/lib/jquery/jquery-3.6.0.min.js"></script>
+
+<script>
+    const floor_sixth = document.getElementById('floor_sixth');
+    const floor_first = document.getElementById('floor_first');
+    const floor_second = document.getElementById('floor_second');
+    const floor_third = document.getElementById('floor_third');
+    const floor_fourth = document.getElementById('floor_fourth');
+    const floor_fifth = document.getElementById('floor_fifth');
+    const login = document.getElementById('login');
+    const enroll = document.getElementById('enroll');
+    const eninput1 = document.getElementById('enroll_input1');
+    const endiv1=document.getElementById('enroll_div1');
+    const eninput2 = document.getElementById('enroll_input2');
+    const endiv2=document.getElementById('enroll_div2');
+    const eninput3 = document.getElementById('enroll_input3');
+    const endiv3=document.getElementById('enroll_div3');
+    const eninput4 = document.getElementById('enroll_input4');
+    const endiv4=document.getElementById('enroll_div4');
+    const eninput5 = document.getElementById('enroll_input5');
+    const endiv5=document.getElementById('enroll_div5');
+    const eninput6 = document.getElementById('enroll_input6');
+    const endiv6=document.getElementById('enroll_div6');
+    const p2 = document.getElementById('p2');
+    const p3 = document.getElementById('p3');
+    const p4 = document.getElementById('p4');
+    const p5 = document.getElementById('p5');
+    const p6 = document.getElementById('p6');
+    const p7 = document.getElementById('p7');
+    var e =document.defaultView.getComputedStyle(floor_first,null).zIndex;
+    var f =document.defaultView.getComputedStyle(floor_second,null).zIndex;
+    var g =document.defaultView.getComputedStyle(floor_third,null).zIndex;
+    var i =document.defaultView.getComputedStyle(floor_fourth,null).zIndex;
+    var j =document.defaultView.getComputedStyle(floor_fifth,null).zIndex;
+
+    function A(){
+        floor_sixth.className = 'floor_sixth_change';
+        floor_second.style.zIndex ='10';
+        floor_second.style.opacity ='1';
+        floor_first.style.opacity ='0.5'
+        login.className = 'login';
+        p2.className = 'p2_change';
+        p6.className = 'p6';
+        p7.className = 'p7';
+    }
+    function B(){
+        floor_sixth.className = 'floor_sixth';
+        p2.className = 'p2';
+        floor_second.style.zIndex ='7';
+        floor_second.style.opacity ='0.5';
+        floor_first.style.opacity ='1';
+    }
+
+    function A1(){
+        floor_sixth.className = 'floor_sixth_change';
+        p3.className = 'p3_change';
+        floor_third.style.zIndex ='10';
+        floor_third.style.opacity ='1';
+        login.className = 'login';
+        enroll.className = 'enroll';
+        p6.className = 'p6';
+        p7.className = 'p7';
+        floor_first.style.opacity ='0.5';
+    }
+    function B1(){
+        floor_sixth.className = 'floor_sixth';
+        p3.className = 'p3';
+        floor_third.style.zIndex ='6';
+        floor_third.style.opacity ='0.5';
+        floor_first.style.opacity ='1';
+    }
+
+    function A2(){
+        floor_sixth.className = 'floor_sixth_change';
+        p4.className = 'p4_change'
+        floor_fourth.style.zIndex ='10';
+        floor_fourth.style.opacity ='1';
+        login.className = 'login';
+        enroll.className = 'enroll';
+        p6.className = 'p6';
+        p7.className = 'p7';
+        floor_first.style.opacity ='0.5';
+    }
+    function B2(){
+        floor_sixth.className = 'floor_sixth';
+        p4.className = 'p4';
+        floor_fourth.style.zIndex ='5';
+        floor_fourth.style.opacity ='0.5';
+        floor_first.style.opacity ='1';
+    }
+    function A3(){
+        floor_sixth.className = 'floor_sixth_change';
+        p5.className = 'p5_change';
+        floor_fifth.style.zIndex ='10';
+        login.className = 'login';
+        enroll.className = 'enroll';
+        floor_fifth.style.opacity ='1';
+        p6.className = 'p6';
+        p7.className = 'p7';
+        floor_first.style.opacity ='0.5';
+    }
+    function B3(){
+        floor_sixth.className = 'floor_sixth';
+        p5.className = 'p5';
+        floor_fifth.style.zIndex ='4';
+        floor_fifth.style.opacity ='0.5';
+        floor_first.style.opacity ='1';
+    }
+
+
+    function A4(){
+        floor_sixth.className = 'floor_sixth_change1';
+        window.setTimeout(function () {
+            floor_sixth.className = 'floor_sixth';
+        },1000)
+        p6.className = 'p6_change';
+        p7.className = 'p7';
+        window.setTimeout(function (){
+            login.className = 'login_change';
+            enroll.className = 'enroll';
+        },1000)
+    }
+
+    function B4(){
+        floor_sixth.className = 'floor_sixth_change1';
+        window.setTimeout(function () {
+            floor_sixth.className = 'floor_sixth_change';
+        },1000)
+        p6.className = 'p6';
+        p7.className = 'p7_change';
+        window.setTimeout(function (){
+            login.className = 'login';
+            enroll.className = 'enroll_change';//////////////////////////////////
+        },1000)
+    }
+    function en1_1(){
+        endiv1.className='enroll_div_change';
+        endiv1.style.borderColor = "indianred";
+    }
+    function en1_2(){
+        var number_u = eninput1.value;
+        $.ajax({
+            url:"/checkUsername.action?username="+number_u,/********************************************/
+            type:"get",
+            dataType:"json",
+            success:function (data){
+                if (data.check_username_msg===true){/******************************************************************************/
+                    endiv1.className='enroll_div';
+                    if (number_u.length<3){
+                        eninput1.focus();
+                    }else {
+                        endiv1.style.borderColor="green";
+                    }
+                }else {
+                    eninput1.focus();
+
+                }
+            }
+        })
+    }
+    function en2_1(){
+        endiv2.className='enroll_div_change';
+        endiv2.style.borderColor = "indianred";
+    }
+    function en2_2(){
+        var number_p = eninput2.value;
+        endiv2.className='enroll_div';//不能纯数字
+        var a=0;
+        if (number_p.length>9||number_p.length<6){
+            eninput2.focus();
+        }else {
+            for (var i=0;i<number_p.length;i++){
+                if (parseFloat(number_p[i]).toString()==="NaN"){
+                    a+=1;
+                }
+                if (i===number_p.length-1){
+                    if (a===0){
+                        eninput2.focus();
+                    }else {
+                        endiv2.style.borderColor="green";
+                    }
+                }
+            }
+        }
+    }
+
+    function en3_1(){
+        endiv3.className='enroll_div_change';
+        endiv3.style.borderColor = "indianred";
+    }
+    function en3_2() {
+        var number_pp = eninput3.value;
+        var number_p = eninput2.value;
+        endiv3.className = 'enroll_div';
+        if (number_pp !== number_p) {
+            eninput2.focus();
+        } else {
+            endiv3.style.borderColor = "green";
+        }
+    }
+
+
+    function en4_1(){
+        endiv4.className='enroll_div_change';
+        endiv4.style.borderColor = "indianred";
+    }
+    function en4_2(){
+        var number_a = eninput4.value;
+        endiv4.className = 'enroll_div';
+        var ad = 0;
+        for (var i=0;i<number_a.length;i++){
+            if (parseFloat(number_a[i]).toString()==="NaN"){
+                ad+=1;
+            }
+            if (i===number_a.length-1){
+                if (ad===0){
+                    eninput4.focus();
+                }else {
+                    endiv4.style.borderColor="green";
+                }
+            }
+        }
+    }
+    function en5_1(){
+        endiv5.className='enroll_div_change';
+        endiv5.style.borderColor = "indianred";
+    }
+    function en5_2(){
+        var number_a = eninput4.value;
+        endiv5.className = 'enroll_div';
+        var a = 0;
+        for (var i=0;i<number_a.length;i++){
+            if (parseFloat(number_a[i]).toString()==="NaN"){
+                a+=1;
+            }
+            if (i===number_a.length-1){
+                if (a===0){
+                    eninput5.focus();
+                }else {
+                    endiv4.style.borderColor="green";
+                }
+            }
+        }
+    }
+
+    function en6_1(){
+        endiv6.className='enroll_div_change';
+        endiv6.style.borderColor = "indianred";
+    }
+    function en6_2(){
+        var number_t=eninput6.value;
+        endiv6.className='enroll_div';
+        if (number_t.length!==11){
+            eninput6.focus();
+        }else {
+            endiv6.style.borderColor="green";
+        }
+    }
+    function dl(){
+        var a =document.getElementById('submit');
+        a.style.transform='scale(2)';
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        $.ajax({
+            url:"/login.action?username="+username+"&password="+password,
+            type:"get",
+            dataType:"json",
+            success:function (data){
+                if (data.login_in_msg===true){
+                    location.href="/toindex.action";
+                }else{
+                    alert('请输入正确的账号和密码');
+                }
+            }
+        })
+    }
+    function ZC(){
+        $.ajax({
+            url:"/register.action?username="+eninput1.value+"&password="+eninput2.value+"&address="+eninput4.value+"&userName="+eninput5.value+"&phone="+eninput6.value,
+            type:"get",
+            dataType:"json",
+            success:function (data){
+                if (data.register_msg===true){
+                    location.href="/toindex.action";
+                }else{
+                    alert('雒瀚文傻逼');
+                }
+            }
+        })
+    }
+</script>
+</body>
+</html>

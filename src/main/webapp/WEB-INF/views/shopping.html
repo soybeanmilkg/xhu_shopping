@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: Cursive;
+        }
+        body{
+            width: 100%;
+            height: 600%;
+            z-index: -1;
+            background:url("../static/image/1.png") ;
+        }
+        #header{
+            width: 100%;
+            height: 35%;
+            position: absolute;
+            background:url("../static/image/1.png");
+            border-bottom: 3px solid red;
+            z-index: 10;
+        }
+        #header>h1 {
+            width: 30%;
+            height: 20%;
+            color: white;
+            border:2px white solid;
+            left: 8%;
+            top: 10%;
+            font-size: 40px;
+            text-align: center;
+            position: absolute;
+        }
+        /**************************************************************************************/
+        #ul{
+            width: 40%;
+            height: 5%;
+            position: fixed;
+            top: 10%;
+            left: 55%;
+            border: 2px red solid;
+            background: rgba(0,0,0,0);
+            z-index: 15;
+        }
+
+        #ul>ul{
+            width: 100%;
+            height: 100%;
+            z-index: 12;
+        }
+        #ul ul li{
+            width: 33%;
+            height: 100%;
+            font-size: 26px;
+            text-align: center;
+            float: left;
+            display: block;
+            letter-spacing: 4px;
+            opacity: 0.5;
+            color: gray;
+        }
+        a,a:hover,a:link,a:visited{
+            text-decoration: none;
+            color: inherit;
+        }
+        #li1:hover{
+            opacity: 0.9;
+            color: white;
+            transition: all 0.5s;
+            border-bottom: 5px solid white;
+        }
+        #li2:hover{
+            opacity: 0.9;
+            color: white;
+            transition: all 0.5s;
+            border-bottom: 5px solid white;
+        }
+        #li3:hover{
+            opacity: 0.9;
+            color: white;
+            transition: all 0.5s;
+            border-bottom: 5px solid white;
+        }
+        #search{
+            width: 50%;
+            height: 15%;
+            position: relative;
+            left: 25%;
+            top: 55%;
+            background: white;
+            border:5px solid gainsboro;
+            border-radius: 20px 20px 20px 20px;
+            z-index: 5;
+        }
+        #search input{
+            width: 75%;
+            height: 100%;
+            position: relative;
+            left: 5%;
+            z-index: 6;
+        }
+        #search button{
+            width:25%;
+            height: 120%;
+            position: absolute;
+            top: -10%;
+            left: 76%;
+            font-size: 20px;
+            letter-spacing: 10px;
+            border:5px solid gainsboro;
+            border-radius: 20px 20px 20px 20px;
+            z-index: 6;
+        }
+        /**********************************************************************************/
+        #first{
+            width: 80%;
+            height: 100%;
+            position: absolute;
+            top:40%;
+            left: 10%;
+            border: 2px red solid;
+            z-index: 8;
+        }
+        #first div{
+            width: 29%;
+            height: 42%;
+            position: relative;
+            margin-left: 3%;
+            margin-top: 3%;
+            float: left;
+            background: red;
+            z-index: 9;
+        }
+        #second{
+            width: 80%;
+            height: 100%;
+            position: absolute;
+            top:40%;
+            left: 10%;
+            border: 2px red solid;
+            z-index: 10;
+        }
+        #second div{
+            width: 29%;
+            height: 42%;
+            position: relative;
+            margin-left: 3%;
+            margin-top: 3%;
+            float: left;
+            background: green;
+            z-index: 11;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body onload="A()">
+<div id="header">
+    <h1>XHU Green Recycle</h1>
+    <div id="search">
+            <form action="" method="post">
+                <input type="search">
+                <button>检索</button>
+            </form>
+        </div>
+    </div>
+    <div id="ul">
+    <ul>
+        <li id="li1" onclick="li_a()"><strong>电子用品</strong></li>
+        <li id="li2" onclick="li_b()"><strong>生活用品</strong></li>
+        <li id="li3" onclick="li_c()"><strong>学习笔记</strong></li>
+    </ul>
+    </div>
+    <div id="first">
+    </div>
+    <div id="second">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+ <script>
+
+     function A() {
+         const div_first = document.getElementById('first');
+         var a =10; //list.length;
+         var i = 0;
+         while (a>6){
+             a=a-6;
+             if (a===1){
+                 div_first.innerHTML="<div></div>";
+             }
+             if (a===2){
+                 div_first.innerHTML="<div></div><div></div>";
+             }
+             if (a===3){
+                 div_first.innerHTML="<div></div><div></div><div></div>";
+             }
+             if (a===4){
+                 div_first.innerHTML="<div></div><div></div><div></div><div></div>";
+             }
+             if (a===5){
+                 div_first.innerHTML="<div></div><div></div><div></div><div></div>";
+             }
+             if (a===6){
+                 div_first.innerHTML="<div></div><div></div><div></div><div></div><div></div>";
+             }
+             i+=1;
+         }
+
+     }
+ </script>
+</body>
+</html>

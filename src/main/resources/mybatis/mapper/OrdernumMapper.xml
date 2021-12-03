@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.xhushopping.mapper.OrdernumMapper">
+    <resultMap id="BaseResultMap" type="com.example.xhushopping.entity.Ordernum">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="ordernum_id" jdbcType="INTEGER" property="ordernum_id"/>
+        <result column="ordernum_time" jdbcType="VARCHAR" property="ordernum_time"/>
+        <result column="ordernum_num" jdbcType="INTEGER" property="ordernum_num"/>
+    </resultMap>
+    <select id="selectRecent" resultMap="BaseResultMap">
+        select *
+        from ordernum
+        where ordernum_id = (select MAX(ordernum_id) from ordernum)
+    </select>
+    <select id="selectOrdernum" resultMap="BaseResultMap">
+        select *
+        from ordernum
+        where ordernum_time = #{ordernum_time}
+    </select>
+    <insert id="insertOrdernum">
+        insert into ordernum(ordernum_time, ordernum_num) value (#{ordernum_time},#{ordernum_num})
+    </insert>
+    <update id="updateOrdernum">
+        update ordernum
+        set ordernum_num=#{ordernum_num}
+        where ordernum_time = #{ordernum_time}
+    </update>
+    <delete id="deleteOrdernum">
+        delete
+        from ordernum
+        where ordernum_time = #{ordernum_time}
+    </delete>
+</mapper>

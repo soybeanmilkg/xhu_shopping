@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.xhushopping.mapper.UsersMapper">
+    <resultMap id="BaseResultMap" type="com.example.xhushopping.entity.User">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="userId" jdbcType="INTEGER" property="userid"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="name" jdbcType="VARCHAR" property="userName"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="user_image" jdbcType="VARCHAR" property="userImage"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select *
+        from users
+    </select>
+    <select id="selectUser" resultMap="BaseResultMap">
+        select *
+        from users
+        where username = #{username}
+    </select>
+    <insert id="insertUser">
+        insert into users(username, password, address, name, phone, user_image, email)
+            value (#{username},#{password},#{address},#{userName},#{phone},#{userImage},#{email})
+    </insert>
+    <update id="updateUser">
+        update users
+        set username = #{username},
+            password=#{password},
+            address=#{address},
+            name=#{userName},
+            phone=#{phone},
+            user_image=#{userImage},
+            email=#{email}
+        where userId=#{userid}
+    </update>
+    <delete id="deleteUser">
+        delete
+        from users
+        where username = #{username}
+    </delete>
+</mapper>

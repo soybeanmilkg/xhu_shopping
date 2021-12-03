@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>主界面</title>
+</head>
+<style>
+    /*450****353*/
+    *{
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: Cursive;
+    }
+    body{
+        width:100%;
+        height: 400%;
+        z-index: -1;
+        background: url("../static/image/8.png");
+    }
+    /************************************************************/
+    #first-top {
+        width: 100%;
+        height: 20%;
+        position: fixed;
+        top: 0;
+        z-index: 10;
+    }
+    .header{
+        width: 100%;
+        height:70%;/**/
+        background: white;
+        overflow: hidden;
+        opacity: 1;
+        z-index: 11;
+    }
+    #header>h1 {
+        width: 30%;
+        height: 40%;
+        top: 30%;
+        margin-left: 8%;
+        font-size: 40px;
+        text-align: center;
+        position: relative;
+        z-index: 12;
+    }
+    #header>ul{
+        width: 40%;
+        height: 25%;
+        margin-left: 45%;
+        z-index: 12;
+    }
+    #header ul li{
+        width: 25%;
+        height: 100%;
+        font-size: 25px;
+        text-align: center;
+        float: left;
+        display: block;
+        letter-spacing: 4px;
+        opacity: 0.7;
+        border-bottom: 5px solid #D57869;
+    }
+    a,a:hover,a:link,a:visited{
+        text-decoration: none;
+        color: inherit;
+    }
+    /***********************************************************/
+    .body_div{
+        width: 80%;
+        height: 25%;
+        border-bottom: 5px solid black;
+        position: relative;
+        left: 10%;
+        z-index: 1;
+    }
+    #first{
+        background: orange;
+    }
+    #first_a{
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: 0;
+    }
+    /*********************************************/
+    #second{
+        background: url("../static/image/2.png");
+        opacity: 0.8;
+    }
+    #second_a{
+        width: 0;
+        height: 0;
+        position:absolute;
+        top: 90%;
+    }
+    #shopping{
+        width: 20%;
+        height: 60%;
+        border: 2px solid black;
+        position: absolute;
+        top: 10%;
+        text-align: center;
+    }
+    #shopping h1{
+        width: 100%;
+        height: 10%;
+        border: 2px solid rebeccapurple;
+        font-size: 40px;
+        letter-spacing: 10px;
+    }
+    #ul1{
+        width: 50%;
+        height: 40%;
+        font-size: 30px;
+        color: grey;
+        margin-left: 20%;
+        margin-top: 10%;
+        list-style: none;
+        border: 2px salmon solid;
+        opacity: 1;
+        z-index: 15;
+    }
+    .ul1_li{
+        width: 100%;
+        height: 20%;
+        position: relative;
+        margin-top: 15%;
+        border: 2px saddlebrown solid;
+        opacity: 0.8;
+        z-index: 16;
+    }
+    .good_shopping1{
+        width: 25%;
+        height: 50%;
+        border: 2px solid black;
+        position: absolute;
+        top: 5%;
+        left: 50%;
+        z-index: 10;
+        /*******background: url("");**************/
+        background-size: 100% 100%;
+        display: block;
+        transition: all 1s;
+        -webkit-transition: all 1s;
+    }
+    .good_shopping1_change1{
+        width: 25%;
+        height: 50%;
+        border: 2px solid black;
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        z-index: 10;
+        /*******background: url("");**************/
+        background-size: 100% 100%;
+        display: block;
+        transition: all 1s;
+        -webkit-transition: all 1s;
+    }
+    .good_shopping2{
+        width: 30%;
+        height: 30%;
+        border: 2px solid black;
+        position: absolute;
+        top: 40%;
+        left: 30%;
+        z-index: 11;
+        /*******background: url("");**************/
+        background-size: 100% 100%;
+        display: block;
+        transition: all 1s;
+        -webkit-transition: all 1s;
+    }
+    .good_shopping2_change1{
+        width: 30%;
+        height: 30%;
+        border: 2px solid black;
+        position: absolute;
+        top: 50%;
+        left: 60%;
+        z-index: 11;
+        /*******background: url("");**************/
+        background-size: 100% 100%;
+        display: block;
+        transition: all 1s;
+        -webkit-transition: all 1s;
+    }
+    .good_shopping3{
+        width: 24%;
+        height: 50%;
+        border: 2px solid black;
+        position: absolute;
+        top: 35%;
+        left: 70%;
+        z-index: 9;
+        background:blue;
+        background-size: 100% 100%;
+        display: block;
+        transition: all 1s;
+        -webkit-transition: all 1s;
+    }
+    .good_shopping3_change1{
+        width: 24%;
+        height: 50%;
+        border: 2px solid black;
+        position: absolute;
+        top: 10%;
+        left: 30%;
+        z-index: 9;
+        background: red;
+        background-size: 100% 100%;
+        display: block;
+        transition: all 1s;
+        -webkit-transition: all 1s;
+    }
+    #shopping div{
+        width: 50%;
+        height: 10%;
+        font-size: 35px;
+        position: absolute;
+        color: grey;
+        top: 60%;
+        left: 20%;
+    }
+    #shopping div:hover{
+        transform: scale(1.05);
+        color: black;
+        transition: all 0.5s;
+    }
+    /********************************************************************/
+    #third{
+        background: yellow;
+    }
+    #third_a{
+        width: 0;
+        height: 0;
+        position:absolute;
+        top: 190%;
+    }
+    /***********************************************************************************/
+
+    #fourth{
+        background: orange;
+    }
+    #fourth_a{
+        width: 0;
+        height: 0;
+        position:absolute;
+        top: 290%;
+    }
+    #user_title{
+        width: 60%;
+        height: 80%;
+        position: absolute;
+        top: 10%;
+        left: 5%;
+        background: green;
+        border:2px solid black;
+        z-index: 5;
+    }
+    #user_tu{
+        width: 18%;
+        height: 25%;
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        border: 4px solid black;
+    }
+    #user_form input{
+        width: 45%;
+        height: 7%;
+        position: absolute;
+        font-size: 30px;
+        border: 2px solid indianred;
+        border-radius: 25px 25px 25px 25px;
+        text-align: center;
+    }
+    #user_form button{
+        width: 40%;
+        height: 10%;
+        position: absolute;
+        bottom: 0px;
+    }
+    #username{
+        top: 10%;
+        left: 40%;
+    }
+    #password{
+        top: 25%;
+        left: 40%;
+    }
+    #address{
+        top: 40%;
+        left: 40%;
+    }
+    #telephone{
+        top: 55%;
+        left: 40%;
+    }
+    #user_shade{
+        width: 70%;
+        height: 70%;
+        position: absolute;
+        top: 10%;
+        left: 5%;
+        opacity: 0;
+        display: none;
+        background: #D57869;
+        z-index: 10;
+    }
+</style>
+<body onload="start()">
+<div id="first-top">
+    <div id="header" class="header">
+        <h1>XHU Green Recycle</h1>
+        <ul>
+            <a href="#first_a"><li id="li1" onclick="li_a()"><strong>网页介绍</strong></li></a>
+            <a href="#second_a"><li id="li2" onclick="li_b()"><strong>市场界面</strong></li></a>
+            <a href="#third_a"><li id="li3" onclick="li_c()"><strong>线下市场</strong></li></a>
+            <a href="#fourth_a"><li id="li4" onclick="li_d()"><strong>个人界面</strong></li></a>
+        </ul>
+    </div>
+</div>
+<div id="first_a"></div>
+<div id="first" class="body_div">
+
+</div>
+<div id="second_a"></div>
+<div id="second" class="body_div">
+    <div id="shopping">
+        <h1>今日推荐</h1>
+        <ul id="ul1">
+            <li id="ul1_li1" class="ul1_li" onmousemove="uli1()"><strong>电子物品</strong></li>
+            <li id="ul1_li2" class="ul1_li" onmousemove="uli2()"><strong>生活用品</strong></li>
+            <li id="ul1_li3" class="ul1_li" onmousemove="uli3()"><strong>学习笔记</strong></li>
+        </ul>
+        <a href="login.html"><div>进入市场</div></a>
+    </div>
+    <div id="good_shopping1" class="good_shopping1"></div>
+    <div id="good_shopping2" class="good_shopping2"></div>
+    <div id="good_shopping3" class="good_shopping3"></div>
+</div>
+<div id="third_a"></div>
+<div id="third" class="body_div">
+
+</div>
+<div id="fourth_a"></div>
+<div id="fourth" class="body_div">
+    <div id="user_title">
+        <div id="user_tu" style="background-size: 100% 100%"></div>
+        <form id="user_form" name="user_form" action="" method="post" enctype="multipart/form-data">
+            <input type="text" id="username" name="username">
+            <input type="text" id="password" name="password">
+            <input type="text" id="telephone" name="telephone">
+            <input type="text" id="address" name="address">
+            <input type="file" id="image" name="image" placeholder="更改头像">
+            <button>更改</button>
+        </form>
+    </div>
+    <div id="user_shade"></div>
+</div>
+<script>
+    const li1=document.getElementById('li1');
+    const li2=document.getElementById('li2');
+    const li3=document.getElementById('li3');
+    const li4=document.getElementById('li4');
+    const ul_li1=document.getElementById('ul1_li1');
+    const ul_li2=document.getElementById('ul1_li2');
+    const ul_li3=document.getElementById('ul1_li3');
+    const shop1 = document.getElementById('good_shopping1');
+    const shop2 = document.getElementById('good_shopping2');
+    const shop3 = document.getElementById('good_shopping3');
+    const user_tu = document.getElementById('user_tu');
+    const username = document.getElementById('username');
+    const password = document.getElementById('password');
+    const telephone = document.getElementById('telephone');
+    const address = document.getElementById('address');
+    var a=sessionStorage.getItem('image');//用户头像
+    var b=sessionStorage.getItem('image1');//推荐商品电子
+    var c=sessionStorage.getItem('image2');//推荐商品电子
+    var d=sessionStorage.getItem('image3');//推荐商品电子//**************************************************
+    var e=sessionStorage.getItem('image4');//推荐商品生活
+    var f=sessionStorage.getItem('image5');//推荐商品生活
+    var g=sessionStorage.getItem('image6');//推荐商品生活
+    function start(){
+        li_a();uli1();
+        form();
+    }
+    function li_a(){
+        li1.style.opacity='1';
+        li2.style.opacity='0.8';
+        li3.style.opacity='0.8';
+        li4.style.opacity='0.8';
+        li1.style.borderBottom='5px solid #D57869';
+        li2.style.borderBottom='none';
+        li3.style.borderBottom='none';
+        li4.style.borderBottom='none';
+    }
+    function li_b(){
+        li2.style.opacity='1';
+        li1.style.opacity='0.8';
+        li3.style.opacity='0.8';
+        li4.style.opacity='0.8';
+        li2.style.borderBottom='5px solid #D57869';
+        li1.style.borderBottom='none';
+        li3.style.borderBottom='none';
+        li4.style.borderBottom='none';
+    }
+    function li_c(){
+        li3.style.opacity='1';
+        li2.style.opacity='0.8';
+        li1.style.opacity='0.8';
+        li4.style.opacity='0.8';
+        li3.style.borderBottom='5px solid #D57869';
+        li2.style.borderBottom='none';
+        li1.style.borderBottom='none';
+        li4.style.borderBottom='none';
+    }
+    function li_d(){
+        li4.style.opacity='1';
+        li2.style.opacity='0.8';
+        li3.style.opacity='0.8';
+        li1.style.opacity='0.8';
+        li4.style.borderBottom='5px solid #D57869';
+        li2.style.borderBottom='none';
+        li3.style.borderBottom='none';
+        li1.style.borderBottom='none';
+    }
+    function uli1(){
+        ul_li1.style.color='black';
+        ul_li1.style.transition='all 0.5s';
+        ul_li2.style.color='grey';
+        ul_li3.style.color='grey';
+        shop1.className='good_shopping1';
+        shop2.className='good_shopping2';
+        shop3.className='good_shopping3';
+    }
+    function uli2(){
+        ul_li2.style.color='black';
+        ul_li2.style.transition='all 0.5s';
+        ul_li1.style.color='grey';
+        ul_li3.style.color='grey';
+        shop1.style.background="url("+e+")";//****************************************************
+        shop2.style.background="url("+f+")";
+        shop3.style.background="url("+g+")";
+        shop1.className='good_shopping1_change1';
+        shop2.className='good_shopping2_change1';
+        shop3.className='good_shopping3_change1';
+    }
+    function uli3(){
+        ul_li3.style.color='black';
+        ul_li3.style.transition='all 0.5s';
+        ul_li2.style.color='grey';
+        ul_li1.style.color='grey';
+        shop1.className='good_shopping1_change2';
+        shop2.className='good_shopping2_change2';
+        shop3.className='good_shopping3_change2';
+    }
+    function form(){
+        user_tu.style.background="url("+a+")";
+        shop1.style.background="url("+b+")";
+        shop2.style.background="url("+c+")";
+        shop3.style.background="url("+d+")";
+        username.setAttribute('placeholder','用户');
+        password.setAttribute('placeholder','密码');
+        telephone.setAttribute('placeholder','地址');
+        address.setAttribute('placeholder','电话');
+    }
+</script>
+</body>
+</html>

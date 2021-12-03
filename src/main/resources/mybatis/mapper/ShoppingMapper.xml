@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.xhushopping.mapper.ShoppingMapper">
+    <resultMap id="BaseResultMap" type="com.example.xhushopping.entity.Shopping">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="shopping_id" jdbcType="INTEGER" property="id"/>
+        <result column="shopping_message" jdbcType="VARCHAR" property="message"/>
+        <result column="shopping_price" jdbcType="DOUBLE" property="shoppingprice"/>
+        <result column="shopping_amount" jdbcType="INTEGER" property="amount"/>
+        <result column="shopping_image" jdbcType="VARCHAR" property="shoppingImage"/>
+        <result column="shopping_name" jdbcType="VARCHAR" property="shoppingName"/>
+        <result column="shopping_class" jdbcType="VARCHAR" property="shoppingClass"/>
+        <result column="shopping_contact" jdbcType="VARCHAR" property="shoppingContact"/>
+    </resultMap>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select *
+        from shopping
+        order by shopping_class
+    </select>
+    <select id="selectShopping" resultMap="BaseResultMap">
+        select *
+        from shopping
+        where shopping_name = #{shoppingName}
+    </select>
+    <insert id="insertShopping">
+        insert into shopping(shopping_message, shopping_price, shopping_amount, shopping_image, shopping_name,
+                             shopping_class, shopping_contact)
+            value (#{message},#{shoppingprice},#{amount},#{shoppingImage},#{shoppingName},#{shoppingClass},#{shoppingContact})
+    </insert>
+    <update id="updateShopping">
+        update shopping
+        set shopping_message=#{message},
+            shopping_price=#{shoppingprice},
+            shopping_amount=#{amount},
+            shopping_image=#{shoppingImage},
+            shopping_name=#{shoppingName},
+            shopping_class=#{shoppingClass},
+            shopping_contact=#{shoppingContact}
+        where shopping_id = #{id}
+    </update>
+    <delete id="deleteShopping">
+        delete
+        from shopping
+        where shopping_name = #{shoppingName}
+    </delete>
+</mapper>
